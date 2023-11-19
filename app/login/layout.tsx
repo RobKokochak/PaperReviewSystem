@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import './globals.css'
-
-const poppins = Poppins({weight: "500", subsets: ['latin']})
+import '../globals.css'
 
 export const metadata: Metadata = {
-  title: 'Conference Paper Review System',
+  title: 'Login to Conference Paper Review System',
   description: 'created by Rob Kokochak',
 }
 
@@ -16,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }
