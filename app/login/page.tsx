@@ -13,9 +13,9 @@ export default function userLogin() {
   }
   
   return (
-    <div id="viewport" className="min-h-screen flex p-6">
+    <main id="viewport" className="min-h-screen flex p-6">
       <div id="left-col" className="flex-1">
-        <h2 id="title" className="mb-20 text-3xl text-white">
+        <h2 id="title" className="mb-20 mr-5 text-3xl text-white">
           Conference Paper Review System
         </h2>
         <div id="signin-title&modal" className="m-10">
@@ -60,10 +60,10 @@ export default function userLogin() {
         </div>
       </div>
       <div id="right-col" className="flex-1">
-        <div className="p-5 h-full w-full flex flex-1 flex-col justify-between space-y-8 bg-modal-color rounded-xl">
-          <div className="border"> 
+        <div id="logo-modal" className="p-5 h-full w-full flex flex-1 flex-col justify-between space-y-8 bg-modal-color rounded-xl">
+          <div id="logo-image"> 
             <Image
-              className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+              className="relative"
               src="/logo.svg"
               alt="Conference Paper Review System Logo"
               width={250}
@@ -71,12 +71,12 @@ export default function userLogin() {
               priority
             />  
           </div>
-          <div id="banner" className="py-12 border border-red-500">
+          <div id="banner" className="py-12">
             <h2 className="pb-3 text-5xl">Conference Paper Review System</h2>
             <p className="text-m">Sign in with your credentials to get started.</p>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
