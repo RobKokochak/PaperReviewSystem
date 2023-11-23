@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'modal-color': '#1B2028',
+        'dark-color': '#1B2028',
+        'highlight-blue': 'rgb(17, 92, 255)',
       }
     },
   },

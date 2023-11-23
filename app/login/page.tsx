@@ -1,7 +1,7 @@
 'use client'
 
 import React, { FormEvent, useState } from 'react';
-import Image from 'next/image';
+import LogoImage from '@/components/LogoImage';
 
 export default function userLogin() {
   const [email, setEmail] = useState("");
@@ -18,11 +18,11 @@ export default function userLogin() {
         <h2 id="title" className="mb-20 mr-5 text-3xl text-white">
           Conference Paper Review System
         </h2>
-        <div id="signin-title&modal" className="m-10">
+        <div id="signin-title&card" className="m-10">
           <h2 id="signin-title" className="mb-20 text-3xl text-white">
             Sign in
           </h2>
-          <div id="signin-modal" className="p-5 rounded-xl max-w-md bg-modal-color">
+          <div id="signin-card" className="p-5 rounded-xl max-w-md bg-dark-color">
             <form id="signin-form" className="mt-8 space-y-14" onSubmit={handleSubmit}>   
               <div id="email-field" className="flex items-center border-b border-gray-400 py-1 -space-y-px">
                 <input 
@@ -60,16 +60,9 @@ export default function userLogin() {
         </div>
       </div>
       <div id="right-col" className="flex-1">
-        <div id="logo-modal" className="p-5 h-full w-full flex flex-1 flex-col justify-between space-y-8 bg-modal-color rounded-xl">
+        <div id="logo-card" className="p-5 h-full w-full flex flex-1 flex-col justify-between space-y-8 bg-dark-color rounded-xl">
           <div id="logo-image"> 
-            <Image
-              className="relative"
-              src="/logo.svg"
-              alt="Conference Paper Review System Logo"
-              width={250}
-              height={250}
-              priority
-            />  
+            <LogoImage width={250}/>
           </div>
           <div id="banner" className="py-12">
             <h2 className="pb-3 text-5xl">Conference Paper Review System</h2>

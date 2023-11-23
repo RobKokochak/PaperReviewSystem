@@ -5,6 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --highlight-blue-rgb: 37, 99, 235;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,4 +18,24 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+}
+
+.activeButtonStyle {
+  background-color: rgb(var(--highlight-blue-rgb));
+  border-radius: .5rem;
+  font-size: .75rem;
+  line-height: 1rem;
+  text-align: left;
+  padding: .75rem 0 .75rem 1.25rem;
+  margin: .25rem 0;
+}
+
+.unactiveButtonStyle {
+  opacity: 0.4;
+  border-radius: .5rem;
+  font-size: .75rem;
+  line-height: 1rem;
+  text-align: left;
+  padding: .75rem 0 .75rem 1.25rem;
+  margin: .52em 0;
 }
