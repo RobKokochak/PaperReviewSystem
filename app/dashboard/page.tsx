@@ -1,8 +1,11 @@
 import LogoImage from '@/components/LogoImage';
 import OverviewContent from '@/components/OverviewContent';
+import prisma from "@/db"
 
-export default function Home() {
+export default async function Home() {
   
+  const user = await prisma.user.findFirst();
+
   return (
     <>
       <main id="viewport" className="flex min-h-screen">
@@ -17,8 +20,9 @@ export default function Home() {
         <div id="content-column" className="flex-1">
           <div id="content-header" className="flex justify-between items-center m-5">
             <h2 className="text-3xl">Dashboard</h2>
+            <p>{`${user?.fname} ${user?.lname}`}</p>
           </div>
-          <div id="content" className='mx-5'>
+          <div id="content" className='h-128 mx-5 my-10'>
             <OverviewContent />
           </div>
         </div>

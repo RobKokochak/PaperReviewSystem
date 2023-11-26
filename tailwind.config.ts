@@ -11,6 +11,9 @@ const config: Config = {
       colors: {
         'dark-color': '#1B2028',
         'highlight-blue': 'rgb(17, 92, 255)',
+      },
+      spacing: {
+        '128': '32rem',
       }
     },
   },

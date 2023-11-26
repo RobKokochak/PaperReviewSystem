@@ -11,7 +11,82 @@ datasource db {
 }
 
 model Conference {
-  id String @id @default(uuid())
-  title String
-  deadline DateTime
+  conference_id             Int      @id
+  name                      String
+  start_date                DateTime
+  end_date                  DateTime
+  paper_submission_deadline DateTime
+  conference_chair_user_id  Int
+  location_id               Int
+  ref_conference_chair      User     @relation(fields: [conference_chair_user_id], references: [user_id])
+  ref_Location              Location @relation(fields: [location_id], references: [location_id])
+  ref_Papers                Paper[]
+}
+
+model Location {
+  location_id     Int          @id
+  city            String
+  state           String
+  country         String
+  ref_Conferences Conference[]
+}
+
+model User {
+  user_id                 Int                 @id
+  email                   String
+  password                String
+  fname                   String
+  lname                   String
+  user_title              String
+  user_affiliation        String
+  ref_Chaired_Conference  Conference[]
+  ref_user_role_link      UserRoleLink[]
+  ref_paper_author_link   PaperAuthorLink[]
+  ref_paper_reviewer_link PaperReviewerLink[]
+}
+
+model Role {
+  role_id            Int            @id
+  role_name          String
+  ref_user_role_link UserRoleLink[]
+}
+
+model Paper {
+  paper_id                 Int                 @id
+  paper_title              String
+  submission_date          DateTime
+  submission_time          DateTime
+  conference_id            Int
+  generated_recommendation String              @default("pending")
+  paper_status             String              @default("pending")
+  ref_Conference           Conference          @relation(fields: [conference_id], references: [conference_id])
+  ref_paper_author_link    PaperAuthorLink[]
+  ref_paper_reviewer_link  PaperReviewerLink[]
+}
+
+model UserRoleLink {
+  user_id Int
+  role_id Int
+  user    User @relation(fields: [user_id], references: [user_id])
+  role    Role @relation(fields: [role_id], references: [role_id])
+
+  @@id([user_id, role_id])
+}
+
+model PaperAuthorLink {
+  author_user_id Int
+  paper_id       Int
+  ref_author     User  @relation(fields: [author_user_id], references: [user_id])
+  ref_paper      Paper @relation(fields: [paper_id], references: [paper_id])
+
+  @@id([author_user_id, paper_id])
+}
+
+model PaperReviewerLink {
+  reviewer_user_id Int
+  paper_id         Int
+  ref_reviewer     User  @relation(fields: [reviewer_user_id], references: [user_id])
+  ref_paper        Paper @relation(fields: [paper_id], references: [paper_id])
+
+  @@id([reviewer_user_id, paper_id])
 }
