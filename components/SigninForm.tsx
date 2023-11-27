@@ -1,18 +1,20 @@
-'use client'
+import prisma from "@/db"
 
-import React, { FormEvent, useState } from 'react';
+export default async function SigninForm() {
 
-export default function SigninForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (formSubmit: FormData) => {
+    'use server'
+    const email = formSubmit.get("email")
+    const password = formSubmit.get("password")
     console.log(`Email: ${email}, Password: ${password}`);
+    const user = await prisma.user.findFirst();
+    if (email == user?.email && password == user?.password) {
+      console.log(`Welcome, ${user?.fname}`);
+    }
   }
 
   return (
-    <form id="signin-form" className="mt-8 space-y-14" onSubmit={handleSubmit}>
+    <form id="signin-form" className="mt-8 space-y-14" action={handleSubmit}>
       <div id="email-field" className="flex items-center border-b border-gray-400 py-1 -space-y-px">
         <input
           id="email-field"
@@ -22,7 +24,6 @@ export default function SigninForm() {
           className="appearance-none bg-transparent border-none w-full py-1 leading-tight focus:outline-none"
           placeholder="Enter your email address"
           aria-label="email"
-          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div id="pw-field" className="flex items-center border-b border-gray-400 py-1 -space-y-px">
@@ -33,7 +34,6 @@ export default function SigninForm() {
           required
           className="appearance-none bg-transparent border-none w-full py-1 leading-tight focus:outline-none"
           placeholder="Enter your password"
-          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div>

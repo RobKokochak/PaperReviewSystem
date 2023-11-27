@@ -7,7 +7,7 @@ export default function LogoImage({ width }: { width: number }) {
       src="/logo.svg"
       alt="Conference Paper Review System Logo"
       width={width}
-      height={0}
+      height={width}
       priority
     />
   )
